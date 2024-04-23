@@ -4,7 +4,7 @@
         <input v-model="url" placeholder="Enter URL here..." type="text">
         <button @click="generateQRCode">Generate QR Code</button>
         <div v-if="qrCodeDataUrl">
-            <img :src="qrCodeDataUrl" alt="Generated QR Code" />
+            <img :src="qrCodeDataUrl" alt="Generated QR Code" width="500" height="500" />
             <button @click="downloadImage">Download QR Code</button>
         </div>
     </div>
