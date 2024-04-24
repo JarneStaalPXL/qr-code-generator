@@ -5,6 +5,13 @@
             <input
                 class="block rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 v-model="url" placeholder="Plak de link hier..." type="text" @keydown.enter="generateQRCode()" />
+
+
+
+        </div>
+
+        <div v-if="url.length > 1033" class="error-message text-red-600">
+            De link is te lang.
         </div>
 
         <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded genDownBtn"
@@ -19,6 +26,8 @@
             </button>
         </div>
 
+
+        <h1 class="font-bold historyTitle" v-if="savedQRs.length > 0">Geschiedenis</h1>
         <div class="savedQrCodes" v-if="savedQRs.length > 0">
             <table class="table-auto">
                 <thead>
@@ -150,11 +159,15 @@ input {
     ;
 }
 
+.error-message {
+    margin: 20px;
+}
+
 .inputcontainer {
     justify-content: center;
     display: flex;
     margin-top: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .qr-code-generator {
@@ -187,10 +200,16 @@ input {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.historyTitle {
+    margin-top: 100px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
 .savedQrCodes {
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+
     margin-bottom: 300px;
 
 }
